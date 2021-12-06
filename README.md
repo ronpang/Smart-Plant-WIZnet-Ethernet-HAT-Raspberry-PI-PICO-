@@ -3,7 +3,9 @@ This Smart Plant Application is a simple system to monitor and control devices t
 
 By using WIZnet Ethernet HAT with Raspberry Pi PICO, it required simple coding to create the communication method between PICO with Adafruit IO.
 
-Youtube: 
+Youtube:
+
+![][link-application]
 
 ## Network Diagram
 The communication method with Adafruit IO required to used a network application protocol: MQTT protocol. (information)
@@ -76,3 +78,4 @@ The following image is network diagrams between Raspberry Pi Pico with Adafruit 
 
 [link-network diagram]: https://github.com/ronpang/Smart-Plant-WIZnet-Ethernet-HAT-Raspberry-PI-PICO-/blob/main/image/network%20diagram%20-%20github.PNG
 [link-connection diagram]: https://github.com/ronpang/Smart-Plant-WIZnet-Ethernet-HAT-Raspberry-PI-PICO-/blob/main/image/connection%20diagram%20-%20github.PNG
+[link-application]: https://github.com/ronpang/Smart-Plant-WIZnet-Ethernet-HAT-Raspberry-PI-PICO-/blob/main/image/IMG_0039.JPG
