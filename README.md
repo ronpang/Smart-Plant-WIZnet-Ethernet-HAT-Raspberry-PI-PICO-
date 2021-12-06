@@ -14,9 +14,12 @@ WIZnet's hardwired TCP/IP protocol provides a substainable solution with a less 
 
 The following image is network diagrams between Raspberry Pi Pico with Adafruit IO
 
-(image)
+![][link-network diagram]
 
 ## Required modules (linked required)
+
+![][link-connection diagram]
+
 ### Solution boards
 1. WIZnet Ethernet HAT (or W5100s-EVB pico)
 2. Raspberry PI PICO (If used W5100S-EVB pico, it does not required to have PICO)
@@ -45,8 +48,6 @@ The following image is network diagrams between Raspberry Pi Pico with Adafruit 
 1. Soil Moisture Sensor - A0
 2. Light Sensor - A1
 
-(image)
-
 ## Software
 ### Bundles:
 1. Circuit Python 7.0 (1 MB) (information)
@@ -71,3 +72,7 @@ The following image is network diagrams between Raspberry Pi Pico with Adafruit 
 ### 6. Analysis commands from Adafruit IO 
 ### 7. Control relays to control the water valve
 ### 8. LED controls by light sensor
+
+
+[link-network diagram]: https://github.com/ronpang/Smart-Plant-WIZnet-Ethernet-HAT-Raspberry-PI-PICO-/blob/main/image/network%20diagram%20-%20github.PNG
+[link-connection diagram]: https://github.com/ronpang/Smart-Plant-WIZnet-Ethernet-HAT-Raspberry-PI-PICO-/blob/main/image/connection%20diagram%20-%20github.PNG
