@@ -7,6 +7,8 @@ from random import randint
 import neopixel
 import adafruit_dht
 
+import os
+
 from adafruit_wiznet5k.adafruit_wiznet5k import *
 import adafruit_wiznet5k.adafruit_wiznet5k_socket as socket
 
