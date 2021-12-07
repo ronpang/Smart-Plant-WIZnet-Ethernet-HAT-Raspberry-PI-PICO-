@@ -163,13 +163,35 @@ print("Publishing value {0} to feed: {1}".format(soil_reading, soil_feed))
 io.publish(soil_feed, soil_reading) #publish to adafruit IO
 ```
 ### 4. Simple calibration on Soil moisture sensor (setting range)
+The range of the soil moisture sensor are required to set. This is based on the soil moisture sensor ADC value could not used the whole range of the analogue signal by the restriction by environment and the sensor's conductivity. 
+
+Therfore the range will be set between the dry condition (air result) and wet condition (water result)
+
+**Air result** are the results collecting from the air. This would be the driest condition for the surrounding environment
+
+**water result** are the results submerge in the water, This would be the moisted condition for the surrounding environment 
+
+#### Process logic of this fucntion:
+1. 10 seconds delay before starting collect air result (dry condition)
+2. Collect 100 samples for air result (10 seconds) and get average value
+3. 10 seconds delay for changing to collect wet result (water result)
+4. Collect 100 samples for water result (10 seconds) and get average value
+5. Using both (air and water) average to become the range 
+
+This application has a feature to saved all the previous setting to a file system.
+
+For more information, please refer the links below.
+1. Soil moisture calibration (setting range) code
+2. Soil moisture calibration example from arduino 
+
 ### 5. Collecting data from sensor 
 ### 6. Analysis commands from Adafruit IO 
-### 7. Control relays to control the water valve
+### 7. Controls relay to control the water valve
 logic are required
 ### 8. LED controls by light sensor
 logic are required
 ### 9. Adafruit IO dashboard setup
+### 10. file system in circuit pythong
 
 [link-network diagram]: https://github.com/ronpang/Smart-Plant-WIZnet-Ethernet-HAT-Raspberry-PI-PICO-/blob/main/image/network%20diagram%20-%20github.PNG
 [link-connection diagram]: https://github.com/ronpang/Smart-Plant-WIZnet-Ethernet-HAT-Raspberry-PI-PICO-/blob/main/image/connection%20diagram%20-%20github.PNG
