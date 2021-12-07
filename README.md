@@ -70,7 +70,7 @@ The following image is network diagrams between Raspberry Pi Pico with Adafruit 
 ### 1. WIZnet's basic setup a MQTT socket (WIZnet official sample coding - MQTT example coding)
 For Smart Plant application, it required to create one of the socket for MQTT. This created MQTT socket, it will be used for MQTT protocol to communicate.
 
-#### Create and Initialize the network 
+#### Create and Initialize the network:
 ```python
 ##Set SPI pins to commnunicate with WIZnet's Ethernet Chip 
 SPI0_SCK = board.GP18
@@ -85,7 +85,7 @@ W5x00_RSTn = board.GP20
 eth = WIZNET5K(spi_bus, cs, is_dhcp=True, mac=MY_MAC, debug=False)
 ```
 WIZnet library are software compatiable with Adafruit mini MQTT library. Therefore user could easily use minimqtt fuction to activate the connection.
-#### Create a MQTT socket
+#### Create a MQTT socket:
 
 ```python
 # Initialize MQTT interface with the ethernet interface
@@ -110,14 +110,14 @@ The method for creating communication for both parties are connecting to the bro
 
 For connecting to Adafruit IO's MQTT broker, it required to to have username and key provided by Adafruit IO (register a account from Adafruit IO)
 
-#### Adafruit IO account setup
+#### Adafruit IO account setup:
 ```python
 secrets = {
     'aio_username' : '*****',  ### Wirte your Username here ###
     'aio_key' : 	 '*****',  ### Write your Active Key here ###
     }
 ```
-#### Function to connect Adafruit IO
+#### Function to connect Adafruit IO:
 ```python    
 # Connect to Adafruit IO
 print("Connecting to Adafruit IO...")
@@ -126,7 +126,7 @@ io.connect()
 ### 3. Set the correct format to communicate with MQTT broker
 When any MQTT clients has connected to the broker and subscribe related feeds, it will received data/command from the MQTT broker. Base on the data from the broker, PICO will starts taking action based on the received data/command from WIZnet's Ethernet HAT
 
-#### Subscribe example Procedure from smart plant application
+#### Subscribe example Procedure from smart plant application:
 All these procdures are reuqired to be done before and after connecting Adafruit IO
 ```python
 # Set up a callback feeds - setup before the connecting Adafruit IO. If there is a update, it will collect values
@@ -140,14 +140,14 @@ io.subscribe("relay")
 io.subscribe("led-onoff")
 io.subscribe("sensor-onoff")
 ```
-#### Start looping for listening updates from the subscribed feeds
+#### Start looping for listening updates from the subscribed feeds:
 ```python  
 while True:
     io.loop()
 ```
 For publish a feeds to a MQTT broker, Adafruit minimqtt has provide the function to simply publish data to the broker.
 
-#### Puslish example Procedure from smart plant application
+#### Puslish example Procedure from smart plant application:
 ```python
 temp_reading = dhtDevice.temperature #Collect temperature data from DHT11
 print("Publishing value {0} to feed: {1}".format(temp_reading, temp_feed))
