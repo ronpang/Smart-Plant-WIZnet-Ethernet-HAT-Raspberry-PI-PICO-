@@ -8,9 +8,9 @@ By using WIZnet Ethernet HAT with Raspberry Pi PICO, it required simple coding t
 ![][link-application]
 
 ## 🗺️ Network Diagram
-The communication method with Adafruit IO required to use a network application protocol: MQTT protocol. (information)
+The communication method with Adafruit IO required to use a network application protocol: MQTT protocol. ([information][link-mqtt info])
 
-This protocol required TCP protocol for the based of the communication. 
+This protocol required TCP protocol as the based of the communication. 
 
 WIZnet's hardwired TCP/IP protocol provides a substainable solution with a less meomory space to easily communicate with Adafruit IO
 
@@ -21,18 +21,18 @@ The following image is network diagrams between Raspberry Pi Pico with Adafruit 
 ## 💻 Required modules (linked required)
 
 ### Solution boards
-1. WIZnet Ethernet HAT (or W5100s-EVB pico)
-2. Raspberry PI PICO (If used W5100S-EVB pico, it does not required to have PICO)
+1. [WIZnet Ethernet HAT][link-Ethernet HAT] (or [W5100s-EVB pico][link-w5100s pico])
+2. [Raspberry PI PICO][link-pico] (If used W5100S-EVB pico, it does not required to have PICO)
 
 ### Sensors:
-1. DHT11 (link)
-2. Soil Moisture Sensor (link)
-3. Light sensor (link)
+1. [DHT11][link-DHT11] 
+2. [Soil Moisture Sensor][link-soil sensor]
+3. [Light Sensor / Photosensitive Sensor][link-light sensor]
 
 #### Controls:
-1. 6V Water Valve (link)
-2. 5V relay (link)
-3. Neopixel (12 pcs of LED lights)(link)
+1. [6V Water Valve][link-water valve]
+2. [5V relay][link-relay]
+3. [Neopixel][link-neopixel] (12 pcs of LED lights)(link)
 
 ### External components
 1. Power Supply: USB 5V external power supply
@@ -51,11 +51,15 @@ The following image is network diagrams between Raspberry Pi Pico with Adafruit 
 1. Soil Moisture Sensor - A0
 2. Light Sensor - A1
 
+### External circuit
+1. Water valve required to use another circuit to prevent any short circuit that may causes to the developing board
+2. Resistor is required to reduce current from the supply to the water valves input current requirement 
+
 ## 📚 Software
 ### Bundles:
-1. Circuit Python 7.0 (1 MB) (information)
-2. Adafruit circuit python bundle (information) - Use the latest version from adafruit bundle page
-3. WIZnet's circuit python bundle (information) - Use the latest version from WIZnet bundle page
+1. [Circuit Python 7.0][link-circuit python] (it required to use 1 MB from the flash) 
+2. [Adafruit circuit python bundle] [link-adafruit] - Use the latest version from adafruit bundle page
+3. [WIZnet's circuit python bundle] [link-wiznet] - Use the latest version from WIZnet bundle page
 
 ### Required Libraries from adafruit bundle:
 1. adafruit_bus_services folder
@@ -67,7 +71,7 @@ The following image is network diagrams between Raspberry Pi Pico with Adafruit 
 7. neopixel
 
 ## 🤖 Features
-### 1. WIZnet's basic setup a MQTT socket (WIZnet official sample coding - MQTT example coding)
+### 1. WIZnet's basic setup a MQTT socket ([WIZnet official sample coding - MQTT example coding][link-MQTT example])
 For Smart Plant application, it required to create one of the socket for MQTT. This created MQTT socket, it will be used for MQTT protocol to communicate.
 
 #### Create and Initialize the network:
@@ -108,7 +112,7 @@ MQTT protocol required a standard format to communicate a MQTT broker. This brok
 
 The method for creating communication for both parties are connecting to the broker for uploading(publish) or downloading(subscribe) information through the broker.
 
-For connecting to Adafruit IO's MQTT broker, it required to to have username and key provided by Adafruit IO (register a account from Adafruit IO)
+For connecting to Adafruit IO's MQTT broker, it required to to have username and key provided by Adafruit IO ([register a account from Adafruit IO][link-register])
 
 #### Adafruit IO account setup:
 ```python
@@ -194,12 +198,12 @@ wet = int(Soil_setting.average("wet"))
 ```
 
 For more information, please refer the links below.
-1. Soil moisture calibration (setting range) code
-2. Soil moisture calibration example from arduino 
+1. [Soil moisture calibration (setting range) code][link-soil code]
+2. [Soil moisture calibration example from arduino][link-soil example] 
 
 ### 5. Collecting data from sensor
 DHT11: DHT library included, it required to activate the function as follow.
-DHT11 or DHT22 will easily have errors, using try method to prevent some error 
+DHT11 or DHT22 will easily have errors, using try method to prevent some errors
 #### DHT11:
 ```python
 try:
@@ -227,9 +231,9 @@ soil_reading = (soil.value - dry_average) / ((wet_average - dry_average)/100)
 ```
 
 ### 6. Adafruit IO dashboard setup
-It is required to register a (account) before using the Dashboard.
+It is required to register a [account][link-register] before using the Dashboard.
 
-After the account is opened, you could create your own dashboard by creating your (feeds and blocks) from Adafruit IO
+After the account is opened, you could create your own dashboard by creating your [feeds and blocks][link-register] from Adafruit IO
 
 #### Smart Plant Adafruit IO setup:
 **Feeds setup:** Try to name your feeds name is the same as your subscribe/publish name. 
@@ -308,7 +312,7 @@ If it turns **on**, brightness of the light will depends on the light sensor
 
 If it turns **off**, brightness will not be changed by light sensor.
 
-For a better version of Neopixel LED appication, please refer this (link)
+For a better version of Neopixel LED appication, please refer this [link][link-neopixel io]
 
 #### Application code:
 ```python
@@ -338,7 +342,7 @@ Raspberry PI PICO with Circuit Python are capable to use file system to save rec
 
 However, it required to add a boot.py file to flash to have this ability
 
-For more information, please refer to the link.
+For more information, please refer to the [link][link-file system].
 
 
 [link-network diagram]: https://github.com/ronpang/Smart-Plant-WIZnet-Ethernet-HAT-Raspberry-PI-PICO-/blob/main/image/network%20diagram%20-%20github.PNG
@@ -348,3 +352,22 @@ For more information, please refer to the link.
 [link-youtube smart plant]: https://www.youtube.com/watch?v=daI-JMGb_9Q&t=12s
 [link-keynames]:https://github.com/ronpang/Smart-Plant-WIZnet-Ethernet-HAT-Raspberry-PI-PICO-/blob/main/image/Key%20name%20(adafruit%20IO).PNG
 [link-block]:https://github.com/ronpang/Smart-Plant-WIZnet-Ethernet-HAT-Raspberry-PI-PICO-/blob/main/image/block%20example.PNG
+[link-mqtt info]: https://mqtt.org/
+[link-Ethernet HAT]: https://docs.wiznet.io/Product/Open-Source-Hardware/wiznet_ethernet_hat
+[link-pico]: https://www.raspberrypi.com/products/raspberry-pi-pico/
+[link-w5100s pico]: https://docs.wiznet.io/Product/iEthernet/W5100S/w5100s-evb-pico
+[link-DHT11]: https://www.aliexpress.com/item/1005002418805042.html?spm=a2g0o.search0304.0.0.35e921e9Wyhdny&algo_pvid=9d8bbd2c-dc0c-44e7-94e1-b800f5791a21&algo_exp_id=9d8bbd2c-dc0c-44e7-94e1-b800f5791a21-0
+[link-soil sensor]: https://www.sparkfun.com/products/13637
+[link-light sensor]: https://www.arrow.com/en/products/dfr0095/dfrobot
+[link-water valve]: https://www.ebay.com/itm/263420396952
+[link-relay]: https://www.amazon.com/SunFounder-Module-Arduino-Raspberry-Trigger/dp/B0151F3A9Q
+[link-neopixel]: https://www.arrow.com/en/products/1643/adafruit-industries
+[link-circuit python]: https://circuitpython.org/board/raspberry_pi_pico/
+[link-adafruit]: https://github.com/adafruit/Adafruit_CircuitPython_Bundle/releases/tag/20211208
+[link-wiznet]: https://github.com/ronpang/RP2040-HAT-CircuitPython/tags
+[link-MQTT example]: https://github.com/ronpang/RP2040-HAT-CircuitPython/blob/master/examples/Adafruit_IO/Up%26DownLink/W5x00_Adafruit%20IO_Up%26DownLink.py
+[link-register]: https://github.com/ronpang/RP2040-HAT-CircuitPython/blob/master/examples/Adafruit_IO/Getting%20Start%20Adafruit%20IO.md
+[link-soil code]: https://github.com/ronpang/WIZnet-HK_Ron/tree/main/Soil%20Sensor
+[link-soil example]: https://lastminuteengineers.com/soil-moisture-sensor-arduino-tutorial/
+[link-neopixel io]: https://github.com/ronpang/WIZnet-HK_Ron/blob/main/Adafruit%20io/Adafruit%20io%20(Neopixel%20light%20control)%20%2B%20previous%20record.py
+[link-file system]: https://learn.adafruit.com/getting-started-with-raspberry-pi-pico-circuitpython/data-logger
