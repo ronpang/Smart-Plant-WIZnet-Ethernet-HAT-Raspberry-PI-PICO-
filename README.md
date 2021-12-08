@@ -70,6 +70,11 @@ The following image is network diagrams between Raspberry Pi Pico with Adafruit 
 6. adafruit_request
 7. neopixel
 
+### How to install circuit Python into Raspberry Pi Pico
+🟥Youtube: [Linux install method][link-linux install]
+
+🟥Youtube: [Window install method][link-window install]
+
 ## 🤖 Features
 ### 1. WIZnet's basic setup a MQTT socket ([WIZnet official sample coding - MQTT example coding][link-MQTT example])
 For Smart Plant application, it required to create one of the socket for MQTT. This created MQTT socket, it will be used for MQTT protocol to communicate.
@@ -371,3 +376,5 @@ For more information, please refer to the [link][link-file system].
 [link-soil example]: https://lastminuteengineers.com/soil-moisture-sensor-arduino-tutorial/
 [link-neopixel io]: https://github.com/ronpang/WIZnet-HK_Ron/blob/main/Adafruit%20io/Adafruit%20io%20(Neopixel%20light%20control)%20%2B%20previous%20record.py
 [link-file system]: https://learn.adafruit.com/getting-started-with-raspberry-pi-pico-circuitpython/data-logger
+[link-linux install]: https://www.youtube.com/watch?v=onBkPkaqDnk&list=PL846hFPMqg3h4HpTVO8cPPHZnJIRA4I2p&index=3
+[link-window install]: https://www.youtube.com/watch?v=e_f9p-_JWZw&t=374s
