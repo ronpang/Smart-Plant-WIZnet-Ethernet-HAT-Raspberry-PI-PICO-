@@ -249,7 +249,31 @@ io.subscribe("sensor-onoff")
 ```
 **Block setup:** Please ensure your block is using the correct feeds
 ![][link-dashboard]
-### 6. Analysis commands from Adafruit IO 
+### 7. Analysis commands from Adafruit IO
+Adafruit Setup: it needs to set correct command for Subscribed blocks to communicate with PICO
+#### Block command setup:
+![][link-block]
+```python
+#Call back function for LED switch
+io.add_feed_callback("led-onoff", on_led_onoff)
+
+#correspond function for analysis the command 
+def on_led_onoff(client, topic, message): 
+    # Method callled when a client's subscribed feed has a new value.
+    global light_onoff
+    print("New message on topic {0}: {1}".format(topic, message))
+    if message == "on": #if received "on" command, turn on LED
+        light_onoff = 1
+        pixels.brightness = 0.1
+        pixels.show() #Turn ON
+    elif message == "off": #if received "off" command, turn on LED
+        light_onoff = 0
+        pixels.brightness = 0
+        pixels.show() #Turn OFF
+    else:
+        print("Unexpected message on LED feed")
+```
+
 ### 7. Controls relay to control the water valve
 logic are required
 ### 8. LED controls by light sensor
@@ -262,3 +286,4 @@ logic are required
 [link-dashboard]:https://github.com/ronpang/Smart-Plant-WIZnet-Ethernet-HAT-Raspberry-PI-PICO-/blob/main/image/dashboard%20image.PNG
 [link-youtube smart plant]: https://www.youtube.com/watch?v=daI-JMGb_9Q&t=12s
 [link-keynames]:https://github.com/ronpang/Smart-Plant-WIZnet-Ethernet-HAT-Raspberry-PI-PICO-/blob/main/image/Key%20name%20(adafruit%20IO).PNG
+[link-block]:https://github.com/ronpang/Smart-Plant-WIZnet-Ethernet-HAT-Raspberry-PI-PICO-/blob/main/image/block%20example.PNG
