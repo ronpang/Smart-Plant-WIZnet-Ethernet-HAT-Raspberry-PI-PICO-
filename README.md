@@ -274,11 +274,72 @@ def on_led_onoff(client, topic, message):
         print("Unexpected message on LED feed")
 ```
 
-### 7. Controls relay to control the water valve
-logic are required
-### 8. LED controls by light sensor
-logic are required
-### 10. file system in circuit pythong
+### 8. Controls relay to control the water valve
+If it turns **on**, it will closed the water valve circuit by the relay
+
+If it turns **off**, it will go to automation mode. if lower than 20% moist content, it will turn on the water valve
+#### Application Code:
+```python
+#Called back function
+def on_relay_msg(client, topic, message):
+    # Method callled when a client's subscribed feed has a new value.
+    global relay_flag
+    print("New message on topic {0}: {1}".format(topic, message))
+    if message == "on":
+        relay.value = True
+        relay_flag = 0
+    elif message == "off":
+        relay.value = False
+        relay_flag = 1
+    else:
+        print("Unexpected message on relay feed")
+  
+ # If statement for decision making   
+ if relay_flag == 1 and soil_reading <20: 
+       relay.value = True
+ elif relay_flag == 1 and soil_reading >60:
+       relay.value = False 
+  
+```
+### 9. LED controls by light sensor
+The following function required the LED light has turn on. (If it is turn off, light sensor will not affect the brightness of the LED light)
+
+If it turns **on**, brightness of the light will depends on the light sensor
+
+If it turns **off**, brightness will not be changed by light sensor.
+
+For a better version of Neopixel LED appication, please refer this (link)
+
+#### Application code:
+```python
+# Call back function
+def on_sensor_onoff(client, topic, message): 
+    # Method callled when a client's subscribed feed has a new value.
+    global sensor_onoff 
+    print("New message on topic {0}: {1}".format(topic, message))
+    if message == "on": # turn on the light sensor 
+        sensor_onoff = 1
+    elif message == "off": #turn off the light sensor
+        sensor_onoff = 0
+    else:
+        print("Unexpected message on LED feed / the led is off")
+        
+#Process for light sensor
+if sensor_onoff == 1 and light_onoff == 1: #when the sensor is on and the light is turn on 
+     light_per= light.value/ 65535* 100 #convert to %
+     for i in range(10):
+         if light_per > i*10 and light_per < i*10 +10: # check the value is in which range
+             value = (10-i)/10 #calucate the related brightness based on light sensor 
+              pixels.brightness = value # change the light
+              pixels.show() #change the brightness
+```
+### 10. file system in circuit python
+Raspberry PI PICO with Circuit Python are capable to use file system to save records into it's 2MB flash drive.
+
+However, it required to add a boot.py file to flash to have this ability
+
+For more information, please refer to the link.
+
 
 [link-network diagram]: https://github.com/ronpang/Smart-Plant-WIZnet-Ethernet-HAT-Raspberry-PI-PICO-/blob/main/image/network%20diagram%20-%20github.PNG
 [link-connection diagram]: https://github.com/ronpang/Smart-Plant-WIZnet-Ethernet-HAT-Raspberry-PI-PICO-/blob/main/image/connection%20diagram%20-%20github.PNG
