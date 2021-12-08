@@ -58,8 +58,8 @@ The following image is network diagrams between Raspberry Pi Pico with Adafruit 
 ## 📚 Software
 ### Bundles:
 1. [Circuit Python 7.0][link-circuit python] (it required to use 1 MB from the flash) 
-2. [Adafruit circuit python bundle] [link-adafruit] - Use the latest version from adafruit bundle page
-3. [WIZnet's circuit python bundle] [link-wiznet] - Use the latest version from WIZnet bundle page
+2. [Adafruit circuit python bundle][link-adafruit] - Use the latest version from adafruit bundle page
+3. [WIZnet's circuit python bundle][link-wiznet] - Use the latest version from WIZnet bundle page
 
 ### Required Libraries from adafruit bundle:
 1. adafruit_bus_services folder
