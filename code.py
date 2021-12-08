@@ -306,7 +306,7 @@ while True:
             delay_counter = 0
             if relay_flag == 1 and soil_reading <20: 
                 relay.value = True
-            elif relay_flag == 1 and soil_reading >20:
+            elif relay_flag == 1 and soil_reading >60:
                 relay.value = False
         
         else:
