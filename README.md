@@ -25,14 +25,14 @@ The following image is network diagrams between Raspberry Pi Pico with Adafruit 
 2. Raspberry PI PICO (If used W5100S-EVB pico, it does not required to have PICO)
 
 ### Sensors:
-1. DHT11
-2. Soil Moisture Sensor
-3. Light sensor 
+1. DHT11 (link)
+2. Soil Moisture Sensor (link)
+3. Light sensor (link)
 
 #### Controls:
-1. 6V Water Valve 
-2. 5V relay
-3. Neopixel (12 pcs of LED lights)
+1. 6V Water Valve (link)
+2. 5V relay (link)
+3. Neopixel (12 pcs of LED lights)(link)
 
 ### External components
 1. Power Supply: USB 5V external power supply
@@ -149,6 +149,11 @@ For publish a feeds to a MQTT broker, Adafruit minimqtt has provide the function
 
 #### Puslish example Procedure from smart plant application:
 ```python
+#Published Feeds setup before sending to Adafruit IO 
+temp_feed = "weatherstation.temperature"
+humid_feed = "weatherstation.humidity"
+soil_feed = "weatherstation.soil"
+
 temp_reading = dhtDevice.temperature #Collect temperature data from DHT11
 print("Publishing value {0} to feed: {1}".format(temp_reading, temp_feed))
 io.publish(temp_feed, temp_reading) #publish to adafruit IO
@@ -180,22 +185,80 @@ Therfore the range will be set between the dry condition (air result) and wet co
 
 This application has a feature to saved all the previous setting to a file system.
 
-#### Codes:
+#### Codes from the application:
+```python 
+Soil_setting.delay("dry")
+dry= int(Soil_setting.average("dry"))
+Soil_setting.delay("wet")
+wet = int(Soil_setting.average("wet"))
+```
 
 For more information, please refer the links below.
 1. Soil moisture calibration (setting range) code
 2. Soil moisture calibration example from arduino 
 
-### 5. Collecting data from sensor 
+### 5. Collecting data from sensor
+DHT11: DHT library included, it required to activate the function as follow.
+DHT11 or DHT22 will easily have errors, using try method to prevent some error 
+#### DHT11:
+```python
+try:
+    #temperature data from DHT11
+    temp_reading = dhtDevice.temperature 
+
+    #Humidity data from DHT11
+    humid_reading = dhtDevice.humidity
+    
+except RuntimeError as error:
+    #Errors happen fairly often, DHT's are hard to read, just keep going
+    print(error.args[0])
+    time.sleep(2.0)
+    continue
+except Exception as error:
+    dhtDevice.exit()
+    raise error
+```
+Soil moisture sensor: Soil sensor required to have (range set) before using it for providing a more resonable results
+After converting the data to digital form, the calculation for this application will be showed like follow.
+
+#### Soil Moisture Sensor:
+```python
+soil_reading = (soil.value - dry_average) / ((wet_average - dry_average)/100) 
+```
+
+### 6. Adafruit IO dashboard setup
+It is required to register a (account) before using the Dashboard.
+
+After the account is opened, you could create your own dashboard by creating your (feeds and blocks) from Adafruit IO
+
+#### Smart Plant Adafruit IO setup:
+**Feeds setup:** Try to name your feeds name is the same as your subscribe/publish name. 
+
+If not, please ensure your key is the same a your subscribe/publish name.
+![][link-keynames]
+```python
+#Published Feeds
+temp_feed = "weatherstation.temperature"
+humid_feed = "weatherstation.humidity"
+soil_feed = "weatherstation.soil"
+
+#Subscribed Feeds
+io.subscribe("relay")
+io.subscribe("led-onoff")
+io.subscribe("sensor-onoff")
+```
+**Block setup:** Please ensure your block is using the correct feeds
+![][link-dashboard]
 ### 6. Analysis commands from Adafruit IO 
 ### 7. Controls relay to control the water valve
 logic are required
 ### 8. LED controls by light sensor
 logic are required
-### 9. Adafruit IO dashboard setup
 ### 10. file system in circuit pythong
 
 [link-network diagram]: https://github.com/ronpang/Smart-Plant-WIZnet-Ethernet-HAT-Raspberry-PI-PICO-/blob/main/image/network%20diagram%20-%20github.PNG
 [link-connection diagram]: https://github.com/ronpang/Smart-Plant-WIZnet-Ethernet-HAT-Raspberry-PI-PICO-/blob/main/image/connection%20diagram%20-%20github.PNG
 [link-application]: https://github.com/ronpang/Smart-Plant-WIZnet-Ethernet-HAT-Raspberry-PI-PICO-/blob/main/image/IMG_0039.JPG
+[link-dashboard]:https://github.com/ronpang/Smart-Plant-WIZnet-Ethernet-HAT-Raspberry-PI-PICO-/blob/main/image/dashboard%20image.PNG
 [link-youtube smart plant]: https://www.youtube.com/watch?v=daI-JMGb_9Q&t=12s
+[link-keynames]:https://github.com/ronpang/Smart-Plant-WIZnet-Ethernet-HAT-Raspberry-PI-PICO-/blob/main/image/Key%20name%20(adafruit%20IO).PNG
