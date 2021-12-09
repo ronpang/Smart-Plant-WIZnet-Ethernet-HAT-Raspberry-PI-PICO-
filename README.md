@@ -346,9 +346,6 @@ def on_relay_msg(client, topic, message):
        relay.value = False 
   
 ```
-
-
-
 <a name="LEDcontrol"></a>
 
 ### 9. LED controls by light sensor
@@ -383,9 +380,6 @@ if sensor_onoff == 1 and light_onoff == 1: #when the sensor is on and the light 
               pixels.brightness = value # change the light
               pixels.show() #change the brightness
 ```
-
-
-
 <a name="filesystem"></a>
 
 ### 10. File system in circuit python
