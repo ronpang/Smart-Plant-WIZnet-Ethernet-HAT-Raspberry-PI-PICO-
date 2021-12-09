@@ -290,6 +290,7 @@ io.subscribe("sensor-onoff")
 **Block setup:** Please ensure your block is using the correct feeds
 ![][link-dashboard]
 
+
 <a name="commands"></a>
 ### 7. Analysis commands from Adafruit IO
 Adafruit Setup: it needs to set correct command for Subscribed blocks to communicate with PICO
@@ -315,6 +316,7 @@ def on_led_onoff(client, topic, message):
     else:
         print("Unexpected message on LED feed")
 ```
+
 
 <a name="watervalve"></a>
 ### 8. Controls relay to control the water valve
@@ -344,6 +346,7 @@ def on_relay_msg(client, topic, message):
        relay.value = False 
   
 ```
+
 
 <a name="LEDcontrol"></a>
 ### 9. LED controls by light sensor
@@ -378,6 +381,7 @@ if sensor_onoff == 1 and light_onoff == 1: #when the sensor is on and the light 
               pixels.brightness = value # change the light
               pixels.show() #change the brightness
 ```
+
 
 <a name="filesystem"></a>
 ### 10. File system in circuit python
