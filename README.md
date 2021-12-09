@@ -38,6 +38,7 @@ The following image is network diagrams between Raspberry Pi Pico with Adafruit 
 ![][link-network diagram]
 
 <a name="Requiredmodules"></a>
+
 ## 💻 Required modules (linked required)
 
 ### Solution boards
@@ -78,6 +79,7 @@ The following image is network diagrams between Raspberry Pi Pico with Adafruit 
 2. Resistor is required to reduce current from the supply to the water valves input current requirement 
 
 <a name="Software"></a>
+
 ## 📚 Software
 ### Bundles:
 1. [Circuit Python 7.0][link-circuit python] (it required to use 1 MB from the flash) 
@@ -99,6 +101,7 @@ The following image is network diagrams between Raspberry Pi Pico with Adafruit 
 🟥Youtube: [Window install method][link-window install]
 
 <a name="Features"></a>
+
 ## 🤖 Features
 
 <a name="MQTT"></a>
@@ -138,6 +141,7 @@ mqtt_client = MQTT.MQTT(
 # Create an Adafruit IO MQTT Client connection
 io = IO_MQTT(mqtt_client)
 ```
+
 <a name="MQTTadafruit"></a>
 
 ### 2. Using MQTT to communicate with Adafruit IO
