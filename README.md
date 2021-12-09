@@ -100,7 +100,9 @@ The following image is network diagrams between Raspberry Pi Pico with Adafruit 
 
 <a name="Features"></a>
 ## 🤖 Features
+
 <a name="MQTT"></a>
+
 ### 1. WIZnet's basic setup for a MQTT socket ([WIZnet official sample coding - MQTT example coding][link-MQTT example])
 For Smart Plant application, it required to create one of the socket for MQTT. This created MQTT socket, it will be used for MQTT protocol to communicate.
 
@@ -137,6 +139,7 @@ mqtt_client = MQTT.MQTT(
 io = IO_MQTT(mqtt_client)
 ```
 <a name="MQTTadafruit"></a>
+
 ### 2. Using MQTT to communicate with Adafruit IO
 MQTT protocol required a standard format to communicate a MQTT broker. This broker will received all information from different parties.
 
@@ -158,6 +161,7 @@ print("Connecting to Adafruit IO...")
 io.connect()
 ```
 <a name="MQTTbroker"></a>
+
 ### 3. Set the correct format to communicate with MQTT broker
 When any MQTT clients has connected to the broker and subscribe related feeds, it will received data/command from the MQTT broker. Base on the data from the broker, PICO will starts taking action based on the received data/command from WIZnet's Ethernet HAT
 
@@ -202,7 +206,9 @@ soil_reading = (soil.value - dry_average) / ((wet_average - dry_average)/100)
 print("Publishing value {0} to feed: {1}".format(soil_reading, soil_feed))
 io.publish(soil_feed, soil_reading) #publish to adafruit IO
 ```
+
 <a name="soilrange"></a>
+
 ### 4. Simple calibration on Soil moisture sensor (setting range)
 The range of the soil moisture sensor are required to set. This is based on the soil moisture sensor ADC value could not used the whole range of the analogue signal by the restriction by environment and the sensor's conductivity. 
 
@@ -234,6 +240,7 @@ For more information, please refer the links below.
 2. [Soil moisture calibration example from arduino][link-soil example] 
 
 <a name="datacollect"></a>
+
 ### 5. Collecting data from sensor
 DHT11: DHT library included, it required to activate the function as follow.
 DHT11 or DHT22 will easily have errors, using try method to prevent some errors
@@ -262,7 +269,9 @@ After converting the data to digital form, the calculation for this application 
 ```python
 soil_reading = (soil.value - dry_average) / ((wet_average - dry_average)/100) 
 ```
+
 <a name="dashboard"></a>
+
 ### 6. Adafruit IO dashboard setup
 It is required to register a [account][link-register] before using the Dashboard.
 
@@ -288,6 +297,7 @@ io.subscribe("sensor-onoff")
 ![][link-dashboard]
 
 <a name="commands"></a>
+
 ### 7. Analysis commands from Adafruit IO
 Adafruit Setup: it needs to set correct command for Subscribed blocks to communicate with PICO
 #### Block command setup:
@@ -314,6 +324,7 @@ def on_led_onoff(client, topic, message):
 ```
 
 <a name="watervalve"></a>
+
 ### 8. Controls relay to control the water valve
 If it turns **on**, it will closed the water valve circuit by the relay
 
