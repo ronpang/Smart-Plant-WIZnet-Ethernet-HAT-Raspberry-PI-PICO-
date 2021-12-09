@@ -343,6 +343,7 @@ def on_relay_msg(client, topic, message):
 ```
 
 <a name="LEDcontrol"></a>
+
 ### 9. LED controls by light sensor
 The following function required the LED light has turn on. (If it is turn off, light sensor will not affect the brightness of the LED light)
 
