@@ -348,6 +348,7 @@ def on_relay_msg(client, topic, message):
 ```
 
 
+
 <a name="LEDcontrol"></a>
 ### 9. LED controls by light sensor
 The following function required the LED light has turn on. (If it is turn off, light sensor will not affect the brightness of the LED light)
@@ -381,6 +382,7 @@ if sensor_onoff == 1 and light_onoff == 1: #when the sensor is on and the light 
               pixels.brightness = value # change the light
               pixels.show() #change the brightness
 ```
+
 
 
 <a name="filesystem"></a>
