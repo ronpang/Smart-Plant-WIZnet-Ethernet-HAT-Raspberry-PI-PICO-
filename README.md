@@ -25,7 +25,6 @@ By using WIZnet Ethernet HAT with Raspberry Pi PICO, it required simple coding t
     - [File system in circuit python](#filesystem)
 
 <a name="NetworkDiagram"></a>
-
 ## 🗺️ Network Diagram
 The communication method with Adafruit IO required to use a network application protocol: MQTT protocol. ([information][link-mqtt info])
 
@@ -38,7 +37,6 @@ The following image is network diagrams between Raspberry Pi Pico with Adafruit 
 ![][link-network diagram]
 
 <a name="Requiredmodules"></a>
-
 ## 💻 Required modules (linked required)
 
 ### Solution boards
@@ -60,7 +58,6 @@ The following image is network diagrams between Raspberry Pi Pico with Adafruit 
 2. Resistor: Around 7 ohm resistor 
 
 <a name="ConnectionDiagram"></a>
-
 ## 🖱️Connection Diagram
 
 ![][link-connection diagram]
@@ -79,7 +76,6 @@ The following image is network diagrams between Raspberry Pi Pico with Adafruit 
 2. Resistor is required to reduce current from the supply to the water valves input current requirement 
 
 <a name="Software"></a>
-
 ## 📚 Software
 ### Bundles:
 1. [Circuit Python 7.0][link-circuit python] (it required to use 1 MB from the flash) 
@@ -101,7 +97,6 @@ The following image is network diagrams between Raspberry Pi Pico with Adafruit 
 🟥Youtube: [Window install method][link-window install]
 
 <a name="Features"></a>
-
 ## 🤖 Features
 
 <a name="MQTT"></a>
