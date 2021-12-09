@@ -21,8 +21,8 @@ By using WIZnet Ethernet HAT with Raspberry Pi PICO, it required simple coding t
     - [Adafruit IO dashboard setup](#dashboard)
     - [Analysis commands from Adafruit IO](#commands)
     - [Controls relay to control the water valve](#watervalve)
-    - [LED controls by light sensor](#LED)
-    - [File system in circuit python](#file)
+    - [LED controls by light sensor](#LEDcontrol)
+    - [File system in circuit python](#filesystem)
 
 <a name="NetworkDiagram"></a>
 
@@ -342,8 +342,7 @@ def on_relay_msg(client, topic, message):
   
 ```
 
-<a name="LED"></a>
-
+<a name="LEDcontrol"></a>
 ### 9. LED controls by light sensor
 The following function required the LED light has turn on. (If it is turn off, light sensor will not affect the brightness of the LED light)
 
@@ -377,7 +376,7 @@ if sensor_onoff == 1 and light_onoff == 1: #when the sensor is on and the light 
               pixels.show() #change the brightness
 ```
 
-<a name="file"></a>
+<a name="filesystem"></a>
 
 ### 10. File system in circuit python
 Raspberry PI PICO with Circuit Python are capable to use file system to save records into it's 2MB flash drive.
