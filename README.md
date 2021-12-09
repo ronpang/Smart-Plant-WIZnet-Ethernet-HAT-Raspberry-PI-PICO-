@@ -7,6 +7,25 @@ By using WIZnet Ethernet HAT with Raspberry Pi PICO, it required simple coding t
 
 ![][link-application]
 
+# Directory
+1. [Network Diagram](#NetworkDiagram)
+2. [Required modules](#Requiredmodules)
+3. [Connection Diagram](#ConnectionDiagram)
+4. [Software](#Software)
+5. [Features](#Features)
+    - [WIZnet's basic setup for a MQTT socket](#MQTT)
+    - [Using MQTT to communicate with Adafruit IO](#MQTTadafruit)
+    - [Set the correct format to communicate with MQTT broker](#MQTTbroker)
+    - [Simple calibration on Soil moisture sensor](#soilrange)
+    - [Collecting data from sensor](#datacollect)
+    - [Adafruit IO dashboard setup](#dashboard)
+    - [Analysis commands from Adafruit IO](#commands)
+    - [Controls relay to control the water valve](#watervalve)
+    - [LED controls by light sensor](#LED)
+    - [File system in circuit python](#file)
+
+<a name="NetworkDiagram"></a>
+
 ## 🗺️ Network Diagram
 The communication method with Adafruit IO required to use a network application protocol: MQTT protocol. ([information][link-mqtt info])
 
@@ -18,6 +37,7 @@ The following image is network diagrams between Raspberry Pi Pico with Adafruit 
 
 ![][link-network diagram]
 
+<a name="Requiredmodules"></a>
 ## 💻 Required modules (linked required)
 
 ### Solution boards
@@ -38,6 +58,8 @@ The following image is network diagrams between Raspberry Pi Pico with Adafruit 
 1. Power Supply: USB 5V external power supply
 2. Resistor: Around 7 ohm resistor 
 
+<a name="ConnectionDiagram"></a>
+
 ## 🖱️Connection Diagram
 
 ![][link-connection diagram]
@@ -55,6 +77,7 @@ The following image is network diagrams between Raspberry Pi Pico with Adafruit 
 1. Water valve required to use another circuit to prevent any short circuit that may causes to the developing board
 2. Resistor is required to reduce current from the supply to the water valves input current requirement 
 
+<a name="Software"></a>
 ## 📚 Software
 ### Bundles:
 1. [Circuit Python 7.0][link-circuit python] (it required to use 1 MB from the flash) 
@@ -75,8 +98,10 @@ The following image is network diagrams between Raspberry Pi Pico with Adafruit 
 
 🟥Youtube: [Window install method][link-window install]
 
+<a name="Features"></a>
 ## 🤖 Features
-### 1. WIZnet's basic setup a MQTT socket ([WIZnet official sample coding - MQTT example coding][link-MQTT example])
+<a name="MQTT"></a>
+### 1. WIZnet's basic setup for a MQTT socket ([WIZnet official sample coding - MQTT example coding][link-MQTT example])
 For Smart Plant application, it required to create one of the socket for MQTT. This created MQTT socket, it will be used for MQTT protocol to communicate.
 
 #### Create and Initialize the network:
@@ -111,7 +136,7 @@ mqtt_client = MQTT.MQTT(
 # Create an Adafruit IO MQTT Client connection
 io = IO_MQTT(mqtt_client)
 ```
-
+<a name="MQTTadafruit"></a>
 ### 2. Using MQTT to communicate with Adafruit IO
 MQTT protocol required a standard format to communicate a MQTT broker. This broker will received all information from different parties.
 
@@ -132,6 +157,7 @@ secrets = {
 print("Connecting to Adafruit IO...")
 io.connect()
 ```
+<a name="MQTTbroker"></a>
 ### 3. Set the correct format to communicate with MQTT broker
 When any MQTT clients has connected to the broker and subscribe related feeds, it will received data/command from the MQTT broker. Base on the data from the broker, PICO will starts taking action based on the received data/command from WIZnet's Ethernet HAT
 
@@ -176,6 +202,7 @@ soil_reading = (soil.value - dry_average) / ((wet_average - dry_average)/100)
 print("Publishing value {0} to feed: {1}".format(soil_reading, soil_feed))
 io.publish(soil_feed, soil_reading) #publish to adafruit IO
 ```
+<a name="soilrange"></a>
 ### 4. Simple calibration on Soil moisture sensor (setting range)
 The range of the soil moisture sensor are required to set. This is based on the soil moisture sensor ADC value could not used the whole range of the analogue signal by the restriction by environment and the sensor's conductivity. 
 
@@ -206,6 +233,7 @@ For more information, please refer the links below.
 1. [Soil moisture calibration (setting range) code][link-soil code]
 2. [Soil moisture calibration example from arduino][link-soil example] 
 
+<a name="datacollect"></a>
 ### 5. Collecting data from sensor
 DHT11: DHT library included, it required to activate the function as follow.
 DHT11 or DHT22 will easily have errors, using try method to prevent some errors
@@ -234,7 +262,7 @@ After converting the data to digital form, the calculation for this application 
 ```python
 soil_reading = (soil.value - dry_average) / ((wet_average - dry_average)/100) 
 ```
-
+<a name="dashboard"></a>
 ### 6. Adafruit IO dashboard setup
 It is required to register a [account][link-register] before using the Dashboard.
 
@@ -258,6 +286,8 @@ io.subscribe("sensor-onoff")
 ```
 **Block setup:** Please ensure your block is using the correct feeds
 ![][link-dashboard]
+
+<a name="commands"></a>
 ### 7. Analysis commands from Adafruit IO
 Adafruit Setup: it needs to set correct command for Subscribed blocks to communicate with PICO
 #### Block command setup:
@@ -282,7 +312,7 @@ def on_led_onoff(client, topic, message):
     else:
         print("Unexpected message on LED feed")
 ```
-
+<a name="watervalve"></a>
 ### 8. Controls relay to control the water valve
 If it turns **on**, it will closed the water valve circuit by the relay
 
@@ -310,6 +340,8 @@ def on_relay_msg(client, topic, message):
        relay.value = False 
   
 ```
+
+<a name="LED"></a>
 ### 9. LED controls by light sensor
 The following function required the LED light has turn on. (If it is turn off, light sensor will not affect the brightness of the LED light)
 
@@ -342,7 +374,9 @@ if sensor_onoff == 1 and light_onoff == 1: #when the sensor is on and the light 
               pixels.brightness = value # change the light
               pixels.show() #change the brightness
 ```
-### 10. file system in circuit python
+
+<a name="file"></a>
+### 10. File system in circuit python
 Raspberry PI PICO with Circuit Python are capable to use file system to save records into it's 2MB flash drive.
 
 However, it required to add a boot.py file to flash to have this ability
