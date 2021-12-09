@@ -350,6 +350,7 @@ def on_relay_msg(client, topic, message):
 
 
 <a name="LEDcontrol"></a>
+
 ### 9. LED controls by light sensor
 The following function required the LED light has turn on. (If it is turn off, light sensor will not affect the brightness of the LED light)
 
@@ -386,6 +387,7 @@ if sensor_onoff == 1 and light_onoff == 1: #when the sensor is on and the light 
 
 
 <a name="filesystem"></a>
+
 ### 10. File system in circuit python
 Raspberry PI PICO with Circuit Python are capable to use file system to save records into it's 2MB flash drive.
 
