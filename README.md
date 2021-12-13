@@ -89,7 +89,7 @@ The following image is network diagrams between Raspberry Pi Pico with Adafruit 
 4. adafruit_wiznet5k folder
 5. adafruit_dht
 6. adafruit_request
-7. neopixel
+7. neopixel (This application is neopixel-compatiable)
 
 ### How to install circuit Python into Raspberry Pi Pico
 🟥Youtube: [Linux install method][link-linux install]
