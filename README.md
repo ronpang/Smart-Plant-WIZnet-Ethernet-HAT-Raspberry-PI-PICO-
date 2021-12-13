@@ -51,7 +51,7 @@ The following image is network diagrams between Raspberry Pi Pico with Adafruit 
 #### Controls:
 1. [6V Water Valve][link-water valve]
 2. [5V relay][link-relay]
-3. [Pixel LED][link-pixel] (12 pcs of LED lights)(link)
+3. [Pixel LED][link-pixel] (12 pcs of LED lights)
 
 ### External components
 1. Power Supply: USB 5V external power supply
