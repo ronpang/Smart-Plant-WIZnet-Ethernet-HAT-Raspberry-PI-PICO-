@@ -51,7 +51,7 @@ The following image is network diagrams between Raspberry Pi Pico with Adafruit 
 #### Controls:
 1. [6V Water Valve][link-water valve]
 2. [5V relay][link-relay]
-3. [Neopixel][link-neopixel] (12 pcs of LED lights)(link)
+3. [Pixel LED][link-pixel] (12 pcs of LED lights)(link)
 
 ### External components
 1. Power Supply: USB 5V external power supply
@@ -65,7 +65,7 @@ The following image is network diagrams between Raspberry Pi Pico with Adafruit 
 ### Digital IO
 1. DHT11 - GP0
 2. 5V realy - GP1
-3. Neopixel - GP2
+3. Pixel LED - GP2
 
 ### Analogue IO (ADC converter)
 1. Soil Moisture Sensor - A0
@@ -355,7 +355,7 @@ If it turns **on**, brightness of the light will depends on the light sensor
 
 If it turns **off**, brightness will not be changed by light sensor.
 
-For a better version of Neopixel LED appication, please refer this [link][link-neopixel io]
+For a better version of Pixel LED appication, please refer this [link][link-pixel io]
 
 #### Application code:
 ```python
@@ -406,7 +406,7 @@ For more information, please refer to the [link][link-file system].
 [link-light sensor]: https://www.arrow.com/en/products/dfr0095/dfrobot
 [link-water valve]: https://www.ebay.com/itm/263420396952
 [link-relay]: https://www.amazon.com/SunFounder-Module-Arduino-Raspberry-Trigger/dp/B0151F3A9Q
-[link-neopixel]: https://www.arrow.com/en/products/1643/adafruit-industries
+[link-pixel]: https://www.arrow.com/en/products/1643/adafruit-industries
 [link-circuit python]: https://circuitpython.org/board/raspberry_pi_pico/
 [link-adafruit]: https://github.com/adafruit/Adafruit_CircuitPython_Bundle/releases/tag/20211208
 [link-wiznet]: https://github.com/ronpang/RP2040-HAT-CircuitPython/tags
@@ -414,7 +414,7 @@ For more information, please refer to the [link][link-file system].
 [link-register]: https://github.com/ronpang/RP2040-HAT-CircuitPython/blob/master/examples/Adafruit_IO/Getting%20Start%20Adafruit%20IO.md
 [link-soil code]: https://github.com/ronpang/WIZnet-HK_Ron/tree/main/Soil%20Sensor
 [link-soil example]: https://lastminuteengineers.com/soil-moisture-sensor-arduino-tutorial/
-[link-neopixel io]: https://github.com/ronpang/WIZnet-HK_Ron/blob/main/Adafruit%20io/Adafruit%20io%20(Neopixel%20light%20control)%20%2B%20previous%20record.py
+[link-pixel io]: https://github.com/ronpang/WIZnet-HK_Ron/blob/main/Adafruit%20io/Adafruit%20io%20(Neopixel%20light%20control)%20%2B%20previous%20record.py
 [link-file system]: https://learn.adafruit.com/getting-started-with-raspberry-pi-pico-circuitpython/data-logger
 [link-linux install]: https://www.youtube.com/watch?v=onBkPkaqDnk&list=PL846hFPMqg3h4HpTVO8cPPHZnJIRA4I2p&index=3
 [link-window install]: https://www.youtube.com/watch?v=e_f9p-_JWZw&t=374s
