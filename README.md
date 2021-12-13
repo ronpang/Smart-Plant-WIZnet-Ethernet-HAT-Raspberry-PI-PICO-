@@ -389,6 +389,9 @@ However, it required to add a boot.py file to flash to have this ability
 
 For more information, please refer to the [link][link-file system].
 
+## Reference:
+Adafruit Neopixel link: https://github.com/adafruit/Adafruit_NeoPixel
+
 
 [link-network diagram]: https://github.com/ronpang/Smart-Plant-WIZnet-Ethernet-HAT-Raspberry-PI-PICO-/blob/main/image/network%20diagram%20-%20github.PNG
 [link-connection diagram]: https://github.com/ronpang/Smart-Plant-WIZnet-Ethernet-HAT-Raspberry-PI-PICO-/blob/main/image/connection%20diagram%20-%20github.PNG
