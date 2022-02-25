@@ -37,7 +37,7 @@ The following image is network diagrams between Raspberry Pi Pico with Adafruit 
 ![][link-network diagram]
 
 <a name="Requiredmodules"></a>
-## 💻 Required modules (linked required)
+## 💻 Required modules (linked provided)
 
 ### Solution boards
 1. [WIZnet Ethernet HAT][link-Ethernet HAT] (or [W5100s-EVB pico][link-w5100s pico])
